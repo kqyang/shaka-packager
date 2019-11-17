@@ -48,6 +48,8 @@ before_deploy:
     else
       mv out/${BUILD_TYPE}/packager deploy/packager-${TRAVIS_OS_NAME}
       mv out/${BUILD_TYPE}/mpd_generator deploy/mpd_generator-${TRAVIS_OS_NAME}
+      tar -zcf pssh-box.py.tar.gz -C out/${BUILD_TYPE} pyproto pssh-box.py
+      mv pssh-box.py.tar.gz deploy/pssh-box-${TRAVIS_OS_NAME}.py.tar.gz
     fi
 
 deploy:
