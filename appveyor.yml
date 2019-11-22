@@ -48,9 +48,9 @@ after_build:
     )
   - if NOT [%LIBPACKAGER_TYPE%] == ["shared_library"] (
       copy "out\%OUTPUT_DIRECTORY%\mpd_generator.exe" deploy\mpd_generator-win.exe
-      7z a pssh-box.py.zip "%APPVEYOR_BUILD_FOLDER%\src\out\%OUTPUT_DIRECTORY%\pyproto" "%APPVEYOR_BUILD_FOLDER%\src\out\%OUTPUT_DIRECTORY%\pssh-box.py"
-      copy pssh-box.py.zip deploy\pssh-box-win.py.zip
     )
+  - 7z a pssh-box.py.zip "%APPVEYOR_BUILD_FOLDER%\src\out\%OUTPUT_DIRECTORY%\pyproto" "%APPVEYOR_BUILD_FOLDER%\src\out\%OUTPUT_DIRECTORY%\pssh-box.py"
+  - copy pssh-box.py.zip deploy\pssh-box-win.py.zip
 
 artifacts:
   - path: 'deploy\*'
