@@ -41,9 +41,9 @@ before_deploy:
   - |
     if [ ${LIBPACKAGER_TYPE} == "shared_library" ]; then
       if [ ${TRAVIS_OS_NAME} == "linux" ]; then
-        mv out/${BUILD_TYPE}/lib/libpackager.so deploy/libpackager-${TRAVIS_OS_NAME}.so
+        mv out/${BUILD_TYPE}/lib/libpackager.so deploy/libpackager.so
       else
-        mv out/${BUILD_TYPE}/libpackager.dylib deploy/libpackager-${TRAVIS_OS_NAME}.dylib
+        mv out/${BUILD_TYPE}/libpackager.dylib deploy/libpackager.dylib
       fi
     else
       mv out/${BUILD_TYPE}/packager deploy/packager-${TRAVIS_OS_NAME}

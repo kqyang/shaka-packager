@@ -43,7 +43,7 @@ after_build:
   - mkdir deploy
   - ps: >-
       If ($env:LIBPACKAGER_TYPE -eq "shared_library") {
-        copy "out\$env:OUTPUT_DIRECTORY\packager.dll" deploy\packager-win.dll
+        copy "out\$env:OUTPUT_DIRECTORY\libpackager.dll" deploy\libpackager.dll
       } Else {
         copy "out\$env:OUTPUT_DIRECTORY\packager.exe" deploy\packager-win.exe
         copy "out\$env:OUTPUT_DIRECTORY\mpd_generator.exe" deploy\mpd_generator-win.exe
