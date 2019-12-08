@@ -61,7 +61,6 @@ deploy:
   skip_cleanup: true
   draft: true
   on:
-    tags: true
     condition: ${BUILD_TYPE} = Release
 
 branches:
