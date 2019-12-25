@@ -55,13 +55,13 @@ before_deploy:
 deploy:
   provider: releases
   api_key:
-    secure: PbhquzRnY1BkGkM/6LmVSZjhUd8jWnj77QjxAKA8REnFhbAuzqwDYuytRmUsBFMtgatUEgTuh/1duZaIl0yXGvRZdNeGk7BgtguUy6vraWObjjNUSlQ6Njm4y/hMgaUIOhA9I2b8gokWU1PA0sDJOF/FoZaAxFpKXcW4d8Z2C0s=
+    secure: Ya5ptzB+UXESFhM8YKVRGwtfksPqCEe3XxHLLCwSDRscvs9Cck6M7Y4IGbEVfvfM8Wpb7Eyt2UoYgAsrugj9K6Y103NZ/Vv2ZJrdWYIi52QTye7GFtSEgImHdlM8LOjXbbh/KroWZFCi+ZxRcFDROaXaTM+P/xvYHeopLwEWs7g=
   file_glob: true
   file: deploy/*
   skip_cleanup: true
   draft: true
   on:
-    condition: ${BUILD_TYPE} = Release
+    condition: ${BUILD_TYPE} = Release && ${LIBPACKAGER_TYPE} == static_library
 
 branches:
   only:
