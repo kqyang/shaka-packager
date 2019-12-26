@@ -39,18 +39,10 @@ before_deploy:
   - rm -rf deploy
   - mkdir deploy
   - |
-    if [ ${LIBPACKAGER_TYPE} == "shared_library" ]; then
-      if [ ${TRAVIS_OS_NAME} == "linux" ]; then
-        mv out/${BUILD_TYPE}/lib/libpackager.so deploy/libpackager.so
-      else
-        mv out/${BUILD_TYPE}/libpackager.dylib deploy/libpackager.dylib
-      fi
-    else
-      mv out/${BUILD_TYPE}/packager deploy/packager-${TRAVIS_OS_NAME}
-      mv out/${BUILD_TYPE}/mpd_generator deploy/mpd_generator-${TRAVIS_OS_NAME}
-      tar -zcf pssh-box.py.tar.gz -C out/${BUILD_TYPE} pyproto pssh-box.py
-      mv pssh-box.py.tar.gz deploy/pssh-box-${TRAVIS_OS_NAME}.py.tar.gz
-    fi
+    mv out/${BUILD_TYPE}/packager deploy/packager-${TRAVIS_OS_NAME}
+    mv out/${BUILD_TYPE}/mpd_generator deploy/mpd_generator-${TRAVIS_OS_NAME}
+    tar -zcf pssh-box.py.tar.gz -C out/${BUILD_TYPE} pyproto pssh-box.py
+    mv pssh-box.py.tar.gz deploy/pssh-box-${TRAVIS_OS_NAME}.py.tar.gz
 
 deploy:
   provider: releases
@@ -59,8 +51,8 @@ deploy:
   file_glob: true
   file: deploy/*
   skip_cleanup: true
-  draft: true
   on:
+    tags: true
     condition: ${BUILD_TYPE} = Release && ${LIBPACKAGER_TYPE} == static_library
 
 branches:
